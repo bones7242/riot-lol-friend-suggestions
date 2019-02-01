@@ -99,6 +99,7 @@ module.exports = (summonerName, region) => {
 		const sortedFriendslist = createSortedFriendsArray(friendshipMap);
 		const topFriends = returnTopFriendsNames(sortedFriendslist);
 		logger.info('Suggested friends:', topFriends);
+		return topFriends;
 	})
 	.catch(error => {
 		logger.error(error);

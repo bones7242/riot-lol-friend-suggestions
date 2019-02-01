@@ -1,14 +1,14 @@
 {
-  "name": "RIOTbot",
+  "name": "LolFriendFinder",
   "version": "0.0.1",
-  "description": "A little bot to interact with RIOT's api",
-  "main": "summoner.js",
+  "description": "A server with web interface to find friend suggestions based on your summoner name",
+  "main": "server.js",
   "scripts": {
-    "start": "node cli.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/billbitt/riot-bot"
+    "url": "https://github.com/billbitt/riot-lol-friend-suggestions"
   },
   "keywords": [
     "RIOT",
@@ -17,13 +17,15 @@
   ],
   "author": "@billbitt",
   "bugs": {
-    "url": "https://bitbucket.org/billbitt/riot-bot/issues"
+    "url": "https://bitbucket.org/billbitt/riot-lol-friend-suggestions/issues"
   },
   "license": "MIT",
-  "homepage": "https://bitbucket.org/billbitt/riot-bot",
+  "homepage": "https://bitbucket.org/billbitt/riot-lol-friend-suggestions",
   "dependencies": {
     "ajax-request": "^1.2.3",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "winston": "^2.3.1"
   }
 }
