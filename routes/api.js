@@ -21,7 +21,7 @@ const isRegionNotValid = region => {
 }
 
 const isSummonerNotValid = summoner => {
-  const regex = /[^A-Za-z0-9._]+/g;
+  const regex = /[^A-Za-z0-9._\ ]+/g;
   return regex.exec(summoner)
 }
 
