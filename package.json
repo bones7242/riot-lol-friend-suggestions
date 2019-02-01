@@ -1,0 +1,29 @@
+{
+  "name": "RIOTbot",
+  "version": "0.0.1",
+  "description": "A little bot to interact with RIOT's api",
+  "main": "summoner.js",
+  "scripts": {
+    "start": "node cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/billbitt/riot-bot"
+  },
+  "keywords": [
+    "RIOT",
+    "LoL",
+    "League of Legends"
+  ],
+  "author": "@billbitt",
+  "bugs": {
+    "url": "https://bitbucket.org/billbitt/riot-bot/issues"
+  },
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/billbitt/riot-bot",
+  "dependencies": {
+    "ajax-request": "^1.2.3",
+    "axios": "^0.18.0",
+    "winston": "^2.3.1"
+  }
+}
