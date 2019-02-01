@@ -43,6 +43,10 @@ html, body, button {
     color: white;
 }
 
+.card--footer {
+    padding: 1em 2em 1em 2em;
+    color: black;
+}
 
 .card .form-group {
     margin: 1em 0 1em 0;

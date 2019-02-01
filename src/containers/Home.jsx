@@ -9,7 +9,7 @@ class Home extends React.Component {
 		this.state = {
 			summonerName: '',
 			region: 'na1',
-			names: [],
+			names: null,
 			error: null,
 			status: READY, // THINKING
 		}
@@ -40,13 +40,13 @@ class Home extends React.Component {
 			} else {
 				if (this.status === 404) {
 					that.setState({
-						names: [],
+						names: null,
 						error: 'no summoner was found',
 					});
 				} else {
 					const response = JSON.parse(this.response);
 					that.setState({
-						names: [],
+						names: null,
 						error: response.message,
 					});
 				}
@@ -66,7 +66,7 @@ class Home extends React.Component {
 		this.setState({
 			status: THINKING,
 			error: null,
-			names: [],
+			names: null,
 		})
 		this.getFriendSuggestions(this.state.region, this.state.summonerName);
 	}
@@ -74,41 +74,52 @@ class Home extends React.Component {
 		return (
 			<div id="home-screen" className="flex-container flex-container--column flex-container--center-center">
 				<div id="small-screen" className="card">
-				<div className="card--title">
-					<h4>LoL Friend Finder v0.0.1</h4>
-				</div>
-				<div className="card--body">
-					<h4>SEARCH</h4>
-					{ this.state.error ? (
-						<p style={{color: 'red'}}>{this.state.error}</p>
-					) : (
-						<p>Search your summoner name to get friend suggestions</p>
-					)}
-					{ this.state.status === READY ? (
-						<form onSubmit={this.handleSubmit}>
-							<div className="form-group">
-								<label htmlFor="summonerName">Summoner Name</label>
-								<input type="text" className="form-control" name="summonerName" value={this.state.summonerName} onChange={this.handleInput}/>
+					<div className="card--title">
+						<h4>LoL Friend Finder v0.0.1</h4>
+					</div>
+					<div className="card--body">
+						<h4>SEARCH</h4>
+						{ this.state.status === READY ? (
+							<div>
+								{ this.state.error ? (
+									<p style={{color: 'red'}}>{this.state.error}</p>
+								) : (
+									<p>Search your summoner name to get friend suggestions</p>
+								)}
+								<form onSubmit={this.handleSubmit}>
+									<div className="form-group">
+										<label htmlFor="summonerName">Summoner Name</label>
+										<input type="text" className="form-control" name="summonerName" value={this.state.summonerName} onChange={this.handleInput}/>
+									</div>
+									<div className="form-group">
+										<label htmlFor="region">Region</label>
+										<input type="text" className="form-control"  name="region" value={this.state.region} onChange={this.handleInput}/>
+									</div>
+									<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
+									<button type="submit" className="btn btn-primary">submit</button>
+								</form>
 							</div>
-							<div className="form-group">
-								<label htmlFor="region">Region</label>
-								<input type="text" className="form-control"  name="region" value={this.state.region} onChange={this.handleInput}/>
-							</div>
-							<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
-							<button type="submit" className="btn btn-primary">submit</button>
-						</form>
-					) : (
-						<p> processing...</p>
-					)}
-					<ul>
-						{this.state.names.map(function(names, index){
-							return <li key={ index }>{names}</li>;
-						})}
-					</ul>
-					
+						) : (
+							<p> processing...</p>
+						)}
+						{
+							this.state.names && (
+								<div>
+									<h4>Friend Suggestions:</h4>
+									<ul>
+										{this.state.names.map(function(names, index){
+											return <li key={ index }>{names}</li>;
+										})}
+									</ul>
+								</div>
+							)
+						}
+					</div>
+					<div className="card--footer">
+						<p>LoL Friend Finder isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
+					</div>
 				</div>
-					
-				</div>
+				
 			</div>
 		);
 	}
