@@ -10,7 +10,6 @@ html, body, button {
 
 
 #small-screen {
-    height: 40%;
     width: 60%; 
 }
 
@@ -44,11 +43,31 @@ html, body, button {
     color: white;
 }
 
+
+.card .form-group {
+    margin: 1em 0 1em 0;
+    padding: 3px 3px 3px 3px;
+    border: solid 1px white;
+}
+
+.card label {
+    margin-right: 1em;
+}
+
+.card input {
+    margin: 1em 0 1em 0;
+    padding: 3px 3px 3px 3px;
+    border: none;
+    background-color: #18AA8E;
+    color: black;
+}
+
 .card button {
     margin: 1em 0 1em 0;
     padding: 3px 2em 3px 2em;
     border: none;
     background-color: #18AA8E;
+    box-shadow: 5px 5px black;
     color: black;
 }
 

@@ -66,9 +66,12 @@ class Home extends React.Component {
 				</div>
 				<div className="card--body">
 					<h4>SEARCH</h4>
-					<p>Search your summoner name to get friend suggestions</p>
-					<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
-					<p style={{color: 'red'}}>{this.state.error}</p>
+
+					{ this.state.error ?
+						<p style={{color: 'red'}}>{this.state.error}</p>
+						:
+						<p>Search your summoner name to get friend suggestions</p>
+					}
 					<form onSubmit={this.handleSubmit}>
 						<div className="form-group">
 							<label htmlFor="summonerName">Summoner Name</label>
@@ -78,6 +81,7 @@ class Home extends React.Component {
 							<label htmlFor="region">Region</label>
 							<input type="text" className="form-control"  name="region" value={this.state.region} onChange={this.handleInput}/>
 						</div>
+						<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
 						<button type="submit" className="btn btn-primary">submit</button>
 					</form>
 					<ul>
