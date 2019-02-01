@@ -1,5 +1,8 @@
 import React from 'react';
 
+const READY = 'READY';
+const THINKING = 'THINKING';
+
 class Home extends React.Component {
 	constructor (props) {
 		super(props);
@@ -8,6 +11,7 @@ class Home extends React.Component {
 			region: 'na1',
 			names: [],
 			error: null,
+			status: READY, // THINKING
 		}
 		// bind class methods with `this`
 		this.handleInput = this.handleInput.bind(this);
@@ -21,7 +25,11 @@ class Home extends React.Component {
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.addEventListener('readystatechange', function () {
 		  if (this.readyState === 4) {
-			console.log('this', this);
+			// set form status
+			that.setState({
+				status: READY,
+			})
+			// display result
 			if (this.status === 200) {
 				const response = JSON.parse(this.response);
 				console.log('200 response', response);
@@ -55,6 +63,11 @@ class Home extends React.Component {
 	}
 	handleSubmit (e) {
 		e.preventDefault();
+		this.setState({
+			status: THINKING,
+			error: null,
+			names: [],
+		})
 		this.getFriendSuggestions(this.state.region, this.state.summonerName);
 	}
 	render () {
@@ -66,29 +79,33 @@ class Home extends React.Component {
 				</div>
 				<div className="card--body">
 					<h4>SEARCH</h4>
-
-					{ this.state.error ?
+					{ this.state.error ? (
 						<p style={{color: 'red'}}>{this.state.error}</p>
-						:
+					) : (
 						<p>Search your summoner name to get friend suggestions</p>
-					}
-					<form onSubmit={this.handleSubmit}>
-						<div className="form-group">
-							<label htmlFor="summonerName">Summoner Name</label>
-							<input type="text" className="form-control" name="summonerName" value={this.state.summonerName} onChange={this.handleInput}/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="region">Region</label>
-							<input type="text" className="form-control"  name="region" value={this.state.region} onChange={this.handleInput}/>
-						</div>
-						<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
-						<button type="submit" className="btn btn-primary">submit</button>
-					</form>
+					)}
+					{ this.state.status === READY ? (
+						<form onSubmit={this.handleSubmit}>
+							<div className="form-group">
+								<label htmlFor="summonerName">Summoner Name</label>
+								<input type="text" className="form-control" name="summonerName" value={this.state.summonerName} onChange={this.handleInput}/>
+							</div>
+							<div className="form-group">
+								<label htmlFor="region">Region</label>
+								<input type="text" className="form-control"  name="region" value={this.state.region} onChange={this.handleInput}/>
+							</div>
+							<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
+							<button type="submit" className="btn btn-primary">submit</button>
+						</form>
+					) : (
+						<p> processing...</p>
+					)}
 					<ul>
 						{this.state.names.map(function(names, index){
 							return <li key={ index }>{names}</li>;
 						})}
 					</ul>
+					
 				</div>
 					
 				</div>
