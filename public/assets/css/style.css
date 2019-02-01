@@ -1,0 +1,28 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#outside-container, #react-app, #loading-screen {
+    height: 100%;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-container--column {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.flex-container--center-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.container, .card {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
