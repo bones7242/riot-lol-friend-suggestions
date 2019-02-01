@@ -79,6 +79,18 @@ class Home extends React.Component {
 					</div>
 					<div className="card--body">
 						<h4>SEARCH</h4>
+						{
+							this.state.names && (
+								<div>
+									<h4>Friend Suggestions:</h4>
+									<ul>
+										{this.state.names.map(function(names, index){
+											return <li key={ index }>{names}</li>;
+										})}
+									</ul>
+								</div>
+							)
+						}
 						{ this.state.status === READY ? (
 							<div>
 								{ this.state.error ? (
@@ -102,20 +114,9 @@ class Home extends React.Component {
 						) : (
 							<p> processing...</p>
 						)}
-						{
-							this.state.names && (
-								<div>
-									<h4>Friend Suggestions:</h4>
-									<ul>
-										{this.state.names.map(function(names, index){
-											return <li key={ index }>{names}</li>;
-										})}
-									</ul>
-								</div>
-							)
-						}
 					</div>
 					<div className="card--footer">
+						<a href="https://github.com/billbitt/riot-lol-friend-suggestions" target="_blank">Github</a>
 						<p>LoL Friend Finder isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
 					</div>
 				</div>

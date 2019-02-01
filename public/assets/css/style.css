@@ -75,3 +75,6 @@ html, body, button {
     color: black;
 }
 
+.card a, .card a:visited {
+    color: white;
+}
