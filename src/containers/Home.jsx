@@ -21,18 +21,27 @@ class Home extends React.Component {
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.addEventListener('readystatechange', function () {
 		  if (this.readyState === 4) {
-			const response = JSON.parse(this.response);
-			console.log('response', response);
+			console.log('this', this);
 			if (this.status === 200) {
-			  that.setState({
-				names: response.data,
-				error: null,
-			  });
+				const response = JSON.parse(this.response);
+				console.log('200 response', response);
+				that.setState({
+					names: response.data,
+					error: null,
+				});
 			} else {
-			  that.setState({
-				names: null,
-				error: response.message,
-			  });
+				if (this.status === 404) {
+					that.setState({
+						names: [],
+						error: 'no summoner was found',
+					});
+				} else {
+					const response = JSON.parse(this.response);
+					that.setState({
+						names: [],
+						error: response.message,
+					});
+				}
 			}
 		  }
 		});

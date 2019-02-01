@@ -35,7 +35,8 @@ module.exports = (summonerName, region) => {
 		logger.info('your favorite champion is:', favoriteChampion);
 	})
 	.catch(error => {
-		logger.error(error);
+		// logger.error(error);
+		throw error;
 	})
 	
 }

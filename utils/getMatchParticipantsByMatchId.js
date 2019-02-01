@@ -25,9 +25,10 @@ module.exports = (matchId, region) => {
 		return getParticipantdata(matchData);
 	})
 	.catch(error => {
-		logger.error({
-		message: error.message, 
-		stack: error.stack
-		});
+		// logger.error({
+		// message: error.message, 
+		// stack: error.stack
+		// });
+		throw error;
 	});
 };

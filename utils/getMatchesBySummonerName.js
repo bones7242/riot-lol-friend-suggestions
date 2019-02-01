@@ -21,9 +21,10 @@ module.exports = (summonerName, region) => {
 		return matchesArray;
 	})
 	.catch(error => {
-		logger.error({
-		message: error.message, 
-		stack: error.stack
-		});
+		// logger.error({
+		// message: error.message, 
+		// stack: error.stack
+		// });
+		throw error;
 	});
 };

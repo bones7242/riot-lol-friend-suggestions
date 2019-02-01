@@ -102,7 +102,8 @@ module.exports = (summonerName, region) => {
 		return topFriends;
 	})
 	.catch(error => {
-		logger.error(error);
+		// logger.error(error);
+		throw error;
 	})
 	
 }

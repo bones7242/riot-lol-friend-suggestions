@@ -2,6 +2,9 @@ html, body, #outside-container, #react-app, #loading-screen, #home-screen {
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+html, body, button {
     font-family: 'Source Code Pro', monospace;
 }
 
@@ -39,5 +42,13 @@ html, body, #outside-container, #react-app, #loading-screen, #home-screen {
 .card--body {
     padding: 1em 2em 1em 2em;
     color: white;
+}
+
+.card button {
+    margin: 1em 0 1em 0;
+    padding: 3px 2em 3px 2em;
+    border: none;
+    background-color: #18AA8E;
+    color: black;
 }
 

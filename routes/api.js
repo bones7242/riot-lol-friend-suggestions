@@ -12,7 +12,20 @@ module.exports = app => {
 			})
 		})
 		.catch(error => {
-			logger.error(error);  // log the result
+			// logger.error(error);  // log the result
+			if (error.response) {
+				if (error.response.status === 403) {
+					res.status(403).json({
+						message: 'server API key likely invalid'
+					});
+				} else if (error.response.status === 404) {
+					res.status(404).json({
+						message: 'No summoner found'
+					});
+				}
+				return;
+			}
+
 			res.status(500).json({ 
 				'message': 'sorry we had an internal error',
 				'data': null,
