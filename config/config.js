@@ -2,8 +2,5 @@ module.exports = {
   logging: {
     level: 'info',
   },
-  api: {
-    key: '',
-  },
   matchLimit: 10
 };

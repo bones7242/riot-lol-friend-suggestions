@@ -1,7 +1,7 @@
 // load dependencies
 const logger = require('winston');
 const getMatchById = require('./getMatchById.js');
-const apiKey = require('../config/config.js').api.key;
+const apiKey = process.env.RIOT_KEY || require('../config/api-key.js');
 
 getParticipantdata = (matchData) => {
 	const { participants, participantIdentities } = matchData;

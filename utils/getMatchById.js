@@ -1,7 +1,7 @@
 // load dependencies
 const logger = require('winston');
 const axios = require('axios');
-const apiKey = require('../config/config.js').api.key;
+const apiKey = process.env.RIOT_KEY || require('../config/api-key.js');
 
 module.exports = (matchId, region) => {
 	const matchQuery = `https://${region}.api.riotgames.com/lol/match/v4/matches/${matchId}?api_key=${apiKey}`;

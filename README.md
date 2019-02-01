@@ -7,7 +7,7 @@ This is a little web app I made to use RIOT's api to make friend suggestions bas
 1. clone the repo
 1. run `npm install`
 1. get an api key from [riot api](https://developer.riotgames.com)
-1. create a copy of `config/config.js.example` as `config/config.js`
+1. create a copy of `config/api-key.js.example` as `config/api-key.js`
 1. add your api key to the config file
 1. start server with `nodemon server`
 1. visit `localhost:3000` in your browser
