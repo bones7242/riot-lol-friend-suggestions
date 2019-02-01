@@ -1,10 +1,14 @@
-html, body {
+html, body, #outside-container, #react-app, #loading-screen, #home-screen {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: 'Source Code Pro', monospace;
 }
-#outside-container, #react-app, #loading-screen {
-    height: 100%;
+
+
+#small-screen {
+    height: 40%;
+    width: 60%; 
 }
 
 .flex-container {
@@ -22,7 +26,18 @@ html, body {
     align-items: center;
 }
 
-.container, .card {
-    margin-top: 1em;
-    margin-bottom: 1em;
+.card {
+    background-color: blue
 }
+
+.card--title {
+    padding: 3px 2em 3px 2em;
+    background-color: #CFCCCC;
+    color: black;
+}
+
+.card--body {
+    padding: 1em 2em 1em 2em;
+    color: white;
+}
+
