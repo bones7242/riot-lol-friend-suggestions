@@ -21,6 +21,7 @@ front end:
   - could use a lot of work
 
 back end:
+  - it needs a way to filter out summoners you are already friends with
   - I'd like to improve the friend finder by improving the criteria it uses to rank potential friends.  If you have any idea, create an issue on this repo. Examples:
   - whether you have played a lane together (i.e. one was sup)
   - add some weighting based on how recent you played with the other player (and how frequently recently)
