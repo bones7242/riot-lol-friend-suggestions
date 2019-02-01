@@ -4,6 +4,7 @@
   "description": "A server with web interface to find friend suggestions based on your summoner name",
   "main": "server.js",
   "scripts": {
+    "prestart": "next build",
     "start": "node server.js",
     "webpack": "webpack"
   },
