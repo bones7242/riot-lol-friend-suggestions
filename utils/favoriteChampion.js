@@ -1,6 +1,6 @@
 const logger = require('winston');
 const Champion = require('../data/champion.json');
-const getMatchesBySummonerName = require('./getmatchesBySummonerName.js');
+const getMatchesBySummonerName = require('./getMatchesBySummonerName.js');
 
 const createChampionKeySet = () => {
 	const championData = Champion.data;

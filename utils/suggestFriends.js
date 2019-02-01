@@ -1,6 +1,6 @@
 const logger = require('winston');
 const getMatchParticipantsByMatchId = require('./getMatchParticipantsByMatchId.js');
-const getMatchesBySummonerName = require('./getmatchesBySummonerName.js');
+const getMatchesBySummonerName = require('./getMatchesBySummonerName.js');
 
 const matchLimit = require('../config/config.js').matchLimit || 100;
 
