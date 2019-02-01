@@ -2,6 +2,8 @@
 
 This is a little web app I made to use RIOT's api to make friend suggestions based on a summoner name.
 
+Live application: [lol-friend-finder.herokuapp.com](http://lol-friend-finder.herokuapp.com/)
+
 ### Installation ###
 
 1. clone the repo
