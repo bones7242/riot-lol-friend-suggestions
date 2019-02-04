@@ -1,6 +1,8 @@
 const logger = require('winston');
+const getSummonerByName = require('./getSummonerByName.js');
+const getMatchesBySummoner = require('./getMatchesBySummoner.js');
 const getMatchParticipantsByMatchId = require('./getMatchParticipantsByMatchId.js');
-const getMatchesBySummonerName = require('./getMatchesBySummonerName.js');
+
 
 const matchLimit = require('../config/config.js').matchLimit || 100;
 
@@ -82,7 +84,10 @@ const returnTopFriendsNames = (sortedFriendsArray) => {
 }
 
 module.exports = (summonerName, region) => {
-	return getMatchesBySummonerName(summonerName, region)
+	return getSummonerByName(summonerName, region)
+	.then(summoner => {
+		return getMatchesBySummoner(summoner, region)
+	})
 	.then(matchList => {
 		// filter matchList b/c rate limiting
 		let reducedMatchList = [];
