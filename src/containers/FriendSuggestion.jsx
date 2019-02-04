@@ -50,7 +50,7 @@ class FriendSuggestion extends React.Component {
 		return (
 			<div className='friend-suggestion'>
 				<img 
-					src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${this.state.profileIconId}.png`}
+					src={`http://ddragon.leagueoflegends.com/cdn/9.2.1/img/profileicon/${this.state.profileIconId}.png`}
 					className='friend-suggestion--icon'
 				/>
 				<p>{this.props.summonerName}</p>
