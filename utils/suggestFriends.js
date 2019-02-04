@@ -86,6 +86,7 @@ const returnTopFriendsNames = (sortedFriendsArray) => {
 module.exports = (summonerName, region) => {
 	return getSummonerByName(summonerName, region)
 	.then(summoner => {
+		summonerName = summoner.name; // overright given name with correct name
 		return getMatchesBySummoner(summoner, region)
 	})
 	.then(matchList => {
