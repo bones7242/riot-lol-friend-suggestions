@@ -108,7 +108,7 @@ class Home extends React.Component {
 										<label htmlFor="region">Region</label>
 										<input type="text" className="form-control"  name="region" value={this.state.region} onChange={this.handleInput}/>
 									</div>
-									<p>Note: no information is stored on our server, we simply make a call to riot's apis, do some processing, and return the result.</p>
+									<p>Note: no user information is stored on our server, we simply call RIOT's APIs, do some processing, and display the result.</p>
 									<button type="submit" className="btn btn-primary">submit</button>
 								</form>
 							</div>
