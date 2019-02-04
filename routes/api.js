@@ -1,5 +1,6 @@
 const logger = require('winston');
 const suggestFriends = require('../utils/suggestFriends.js');
+const getProfileIconIdBySummonerName = require('../utils/getProfileIconIdBySummonerName.js');
 
 const isRegionNotValid = region => {
 	switch (region) {
@@ -25,22 +26,59 @@ const isSummonerNotValid = summoner => {
   return regex.exec(summoner)
 }
 
+const handleError = (error, res) => {
+	// logger.error(error);  // log the result
+	if (error.response) {
+		if (error.response.status === 403) {
+			res.status(403).json({
+				message: 'server API key likely invalid'
+			});
+		} else if (error.response.status === 404) {
+			res.status(404).json({
+				message: 'No summoner found'
+			});
+		}
+		return;
+	}
+
+	res.status(500).json({ 
+		'message': 'sorry we had an internal error',
+		'data': null,
+	})
+}
+
+const validateParams = (region, summonerName, res) => {
+	// cleanse region
+	if (isRegionNotValid(region)){
+		res.status(400).json({ 
+			'message': 'invalid region',
+		})
+		return;
+	}
+	if (isSummonerNotValid(summonerName)){
+		res.status(400).json({ 
+			'message': 'invalid summoner name',
+		})
+		return;
+	}
+}
+
 module.exports = app => {  
   	app.get('/friends-suggestions/:region/:summonerName', (req, res) => {
-		
 		const { region, summonerName } = req.params;
-		// cleanse region
+		// validate params
 		if (isRegionNotValid(region)){
 			res.status(400).json({ 
 				'message': 'invalid region',
 			})
+			return;
 		}
 		if (isSummonerNotValid(summonerName)){
 			res.status(400).json({ 
 				'message': 'invalid summoner name',
 			})
+			return;
 		}
-		// filter summoner name
 		// proceed
 		suggestFriends(summonerName, region)
 		.then(suggestions =>  {
@@ -50,24 +88,34 @@ module.exports = app => {
 			})
 		})
 		.catch(error => {
-			// logger.error(error);  // log the result
-			if (error.response) {
-				if (error.response.status === 403) {
-					res.status(403).json({
-						message: 'server API key likely invalid'
-					});
-				} else if (error.response.status === 404) {
-					res.status(404).json({
-						message: 'No summoner found'
-					});
-				}
-				return;
-			}
-
-			res.status(500).json({ 
-				'message': 'sorry we had an internal error',
-				'data': null,
+			handleError(error, res);
+		});
+	});
+	app.get('/profile-icon/:region/:summonerName', (req, res) => {
+		const { region, summonerName } = req.params;
+		// validate params
+		if (isRegionNotValid(region)){
+			res.status(400).json({ 
+				'message': 'invalid region',
 			})
+			return;
+		}
+		if (isSummonerNotValid(summonerName)){
+			res.status(400).json({ 
+				'message': 'invalid summoner name',
+			})
+			return;
+		}
+		// proceed
+		getProfileIconIdBySummonerName(summonerName, region)
+		.then(profileIconId =>  {
+			res.status(200).json({ 
+				'message': `profile icon successfully found for ${summonerName}`,
+				'data': profileIconId, 
+			})
+		})
+		.catch(error => {
+			handleError(error, res);
 		});
 	});
 };
