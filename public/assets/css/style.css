@@ -78,3 +78,9 @@ html, body, button {
 .card a, .card a:visited {
     color: white;
 }
+
+.friend-suggestion--icon {
+    width: 20px;
+    padding-right: 1em;
+    float: left;
+}

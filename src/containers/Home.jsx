@@ -1,4 +1,5 @@
 import React from 'react';
+import FriendSuggestion from './FriendSuggestion.jsx';
 
 const READY = 'READY';
 const THINKING = 'THINKING';
@@ -84,8 +85,8 @@ class Home extends React.Component {
 								<div>
 									<h4>Friend Suggestions:</h4>
 									<ul>
-										{this.state.names.map(function(names, index){
-											return <li key={ index }>{names}</li>;
+										{this.state.names.map((name, index) => {
+											return <FriendSuggestion key={ index } region={this.state.region} summonerName={name}/>;
 										})}
 									</ul>
 								</div>
