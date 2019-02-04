@@ -76,7 +76,7 @@ class Home extends React.Component {
 			<div id="home-screen" className="flex-container flex-container--column flex-container--center-center">
 				<div id="small-screen" className="card">
 					<div className="card--title">
-						<h4>LoL Friend Finder v0.0.1</h4>
+						<h4>LoL Friend Suggestions v0.0.1</h4>
 					</div>
 					<div className="card--body">
 						<h4>SEARCH</h4>
@@ -118,7 +118,7 @@ class Home extends React.Component {
 					</div>
 					<div className="card--footer">
 						<a href="https://github.com/billbitt/riot-lol-friend-suggestions" target="_blank">Github</a>
-						<p>LoL Friend Finder isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
+						<p>LoL Friend Suggestions isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.</p>
 					</div>
 				</div>
 				
